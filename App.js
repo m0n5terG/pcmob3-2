@@ -10,11 +10,7 @@ export default function App() {
  return (
    <NavigationContainer>
      <Stack.Navigator mode="modal" headerMode=  "none">
-       <Stack.Screen
-         name="Notes Stack"
-         component={NotesStack}
-         options={{ headerShown: false }}
-       />
+       <Stack.Screen name="Notes Stack" component={NotesStack} />
        <Stack.Screen name="Add Note" component={AddScreen} />
      </Stack.Navigator>
    </NavigationContainer>
