@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 
-export default function AddScreen({ route, navigation }) {
+export default function AddScreen({ navigation }) {
     const [text, setText] = useState("");
    
     return (
