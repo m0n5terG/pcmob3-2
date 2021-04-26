@@ -64,15 +64,11 @@ export default function NotesScreen({ navigation, route }) {
        tx.executeSql("INSERT INTO notes (done, title) VALUES (0, ?)", [
          route.params.text,
        ]);
-     });
-
-     const newNote = {
-       title: route.params.text,
-       done: false,
-       id: notes.length.toString(),
-     };
-     setNotes([...notes, newNote]);
-   }
+     },
+     null,
+     refreshNotes
+     );
+    }
  }, [route.params?.text]);
     
  function addNote() {
@@ -83,7 +79,7 @@ export default function NotesScreen({ navigation, route }) {
     console.log("Deleting " + id);
     db.transaction(
       (tx) => {
-        tx.executeSql(`DELETE FROM notes WHERE id=?`);
+        tx.executeSql(`DELETE FROM notes WHERE id=${id}`);
       },
       null,
       refreshNotes
