@@ -91,12 +91,14 @@ export default function NotesScreen({ navigation, route }) {
      <View
        style={{
          padding: 10,
+         paddingRight: 30,
          paddingTop: 20,
          paddingBottom: 20,
          borderBottomColor: "#ccc",
          borderBottomWidth: 1,
          flexDirection: "row",
          justifyContent: "space-between",
+
        }}
      >
        <Text style={{ textAlign: "left", fontSize: 16 }}>{item.title}</Text>
@@ -127,6 +129,7 @@ export default function NotesScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
  container: {
+  
    flex: 1,
    backgroundColor: "#e6ebff",
    alignItems: "center",
