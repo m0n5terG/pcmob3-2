@@ -6,16 +6,40 @@ import {
  FlatList,
  TouchableOpacity,
 } from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import * as SQLite from "expo-sqlite";
 
 const db = SQLite.openDatabase("notes.db");
 
 export default function NotesScreen({ navigation, route }) {
- const [notes, setNotes] = useState([
-   { title: "Walk the cat", done: false, id: "0" },
-   { title: "Feed the elephant", done: false, id: "1" },
- ]);
+ 
+    const [notes, setNotes] = useState([]);
+
+ function refreshNotes() {
+    db.transaction((tx) => {
+        tx.executeSql(
+            "SELECT * FROM note",
+            null,
+            (txObj, { rows: { _array } }) => setNotes(_array),
+            (txObj, error) => console.log("Error ", error)
+        );
+    });
+ }
+
+ useEffect(() => {
+     db.transaction((tx) => {
+         tx.executeSql(
+             `CREATE TABLE IF NOT EXISTS
+             note
+             (id INTEGER PRIMARY KEYAUTOINCREMENT,
+                title TEXT,
+                done INT)`
+         );
+     },
+     null,
+     refreshNotes
+     );
+ }, []);
 
  useEffect(() => {
    navigation.setOptions({
@@ -32,26 +56,37 @@ export default function NotesScreen({ navigation, route }) {
    });
  });
 
- useEffect(() => {
-    if (route.params?.text) {
-      db.transaction((tx) => {
-        tx.executeSql("INSERT INTO notes (done, value) VALUES (0, ?)", [
-          route.params.text,
-        ]);
-      });
- 
-      const newNote = {
-        title: route.params.text,
-        done: false,
-        id: notes.length.toString(),
-      };
-      setNotes([...notes, newNote]);
-    }
-  }, [route.params?.text]);
+  useEffect(() => {
+   if (route.params?.text) {
+     db.transaction((tx) => {
+       tx.executeSql("INSERT INTO notes (done, value) VALUES (0, ?)", [
+         route.params.text,
+       ]);
+     });
 
+     const newNote = {
+       title: route.params.text,
+       done: false,
+       id: notes.length.toString(),
+     };
+     setNotes([...notes, newNote]);
+   }
+ }, [route.params?.text]);
+    
  function addNote() {
    navigation.navigate("Add Note");
  }
+
+ function deleteNote(id) {
+    console.log("Deleting " + id);
+    db.transaction(
+      (tx) => {
+        tx.executeSql(`DELETE FROM notes WHERE id=?`);
+      },
+      null,
+      refreshNotes
+    );
+  }
 
  function renderItem({ item }) {
    return (
@@ -62,9 +97,20 @@ export default function NotesScreen({ navigation, route }) {
          paddingBottom: 20,
          borderBottomColor: "#ccc",
          borderBottomWidth: 1,
+         flexDirection: "row",
+         justifyContent: "space-between",
        }}
      >
        <Text style={{ textAlign: "left", fontSize: 16 }}>{item.title}</Text>
+       <TouchableOpacity onPress={() => deleteNote(item.id)}>
+       <MaterialIcons 
+            name="delete" 
+            size={24} 
+            color="black"
+            flexDirection="row"
+            justifyContent="space-between"
+        />  
+       </TouchableOpacity>
      </View>
    );
  }
@@ -75,6 +121,7 @@ export default function NotesScreen({ navigation, route }) {
        style={{ width: "100%" }}
        data={notes}
        renderItem={renderItem}
+       keyExtractor={(item) => item.id.toString()}
      />
    </View>
  );
