@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
  StyleSheet,
+ Alert,
  Text,
  View,
  FlatList,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import * as SQLite from "expo-sqlite";
+
 
 const db = SQLite.openDatabase("notes.db");
 
@@ -80,6 +82,17 @@ export default function NotesScreen({ navigation, route }) {
     db.transaction(
       (tx) => {
         tx.executeSql(`DELETE FROM notes WHERE id=${id}`);
+        Alert.alert(
+          'Done!',
+          'Note deleted successfully',
+          [
+            {
+              text: 'Ok',
+              onPress: () => navigation.navigate('Notes'),
+            },
+          ],
+          { cancelable: false }
+        );
       },
       null,
       refreshNotes
