@@ -117,7 +117,7 @@ export default function NotesScreen({ navigation, route }) {
        <MaterialIcons 
             name="delete" 
             size={24} 
-            color="black"
+            color="darkgray"
             flexDirection="row"
             justifyContent="space-between"
         />  
