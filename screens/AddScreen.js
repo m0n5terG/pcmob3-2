@@ -34,7 +34,7 @@ export default function AddScreen({ navigation }) {
           <Text style={{ marginTop: 40, color: "black" }}>
           This is what you typed:
         </Text>
-        <Text style={{ color: "#333", marginTop: 10 }}>{text}</Text>
+        <Text style={{ color: "#737373", marginTop: 10 }}>{text}</Text>
       </View>
     );
    }
