@@ -57,8 +57,6 @@ export default function NotesScreen({ navigation, route }) {
         ),
       });
     });
- 
-  
 
   useEffect(() => {
    if (route.params?.text) {

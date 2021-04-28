@@ -2,12 +2,15 @@ import { useState } from "react";
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 
+let today = new Date().toISOString().replace(/T.*/,'').split('-').reverse().join('-');
+
 export default function AddScreen({ navigation }) {
     const [text, setText] = useState("");
    
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.label}>Add your todo</Text>
+        <Text>{today}</Text>
+        <Text style={styles.label}>Add your Notes</Text>
         <TextInput
           style={styles.textInput}
           value={text}
