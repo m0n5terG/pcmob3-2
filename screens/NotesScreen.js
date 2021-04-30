@@ -24,7 +24,7 @@ export default function NotesScreen({ navigation, route }) {
           "SELECT * FROM notes",
             null,
             (txObj, { rows: { _array } }) => setNotes(_array),
-            (txObj, error) => console.log("Error ", error)
+            (txObj, error) => console.log(`Error: ${error}`)
         );
       });
     }
@@ -32,8 +32,7 @@ export default function NotesScreen({ navigation, route }) {
     useEffect(() => {
       db.transaction((tx) => {
           tx.executeSql(
-              `CREATE TABLE IF NOT EXISTS
-              notes
+              `CREATE TABLE IF NOT EXISTS notes
               (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  title TEXT,
                  done INT);`
@@ -129,7 +128,6 @@ export default function NotesScreen({ navigation, route }) {
             size={24} 
             color="darkgray"
             flexDirection="row"
-            justifyContent="space-between"
         />  
        </TouchableOpacity>
      </View>
