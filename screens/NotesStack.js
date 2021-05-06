@@ -5,25 +5,25 @@ import NotesScreen from "./NotesScreen";
 const InnerStack = createStackNavigator();
 
 export default function NotesStack() {
- return (
-   <InnerStack.Navigator>
-     <InnerStack.Screen
-       name="Notes"
-       component={NotesScreen}
-       options={{
-         headerTitle: "Notes App",
-         headerTitleStyle: {
-           fontWeight: "bold",
-           fontSize: 30,
-         },
-         headerStyle: {
-           height: 120,
-           backgroundColor: "#99afff",
-           borderBottomColor: "#b3c4ff",
-           borderBottomWidth: 1,
-         },
-       }}
-     />
-   </InnerStack.Navigator>
- );
+  return (
+    <InnerStack.Navigator>
+      <InnerStack.Screen
+        name="Notes"
+        component={NotesScreen}
+        options={{
+          headerTitle: "Notes App",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 30,
+          },
+          headerStyle: {
+            height: 120,
+            backgroundColor: "#99afff",
+            borderBottomColor: "#b3c4ff",
+            borderBottomWidth: 1,
+          },
+        }}
+      />
+    </InnerStack.Navigator>
+  );
 }
