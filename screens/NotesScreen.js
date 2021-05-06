@@ -105,8 +105,8 @@ export default function NotesScreen({ navigation, route }) {
          width: "auto"     
        }}>
          <TouchableOpacity style={styles.listContainer}>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 340, paddingLeft: 10 }}>
-       <Text style={{ textAlign: "left", fontSize: 16, padding: 10 }}>{item.title}</Text>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 300, paddingLeft: 10 }}>
+       <Text style={{ textAlign: "left", fontSize: 16, padding: 5, }}>{item.title}</Text>
        </View>
        <TouchableOpacity onPress={() => deleteNote(item.id)}>
        <MaterialIcons 
