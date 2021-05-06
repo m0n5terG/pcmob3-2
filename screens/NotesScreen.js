@@ -97,25 +97,24 @@ export default function NotesScreen({ navigation, route }) {
 
  function renderItem({ item }) {
    return (
-     <View
-       style={{
+     <View style={{
          flexDirection: "row",
          justifyContent: "center",
          paddingTop: 10,
          width: "auto"     
        }}>
          <TouchableOpacity style={styles.listContainer}>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 300, paddingLeft: 10 }}>
-       <Text style={{ textAlign: "left", fontSize: 16, padding: 5, }}>{item.title}</Text>
-       </View>
-       <TouchableOpacity onPress={() => deleteNote(item.id)}>
-       <MaterialIcons 
-            name="delete" 
-            size={24} 
-            color="blue"
-        />  
-       </TouchableOpacity>
-       </TouchableOpacity>
+           <View style={{ flexDirection: "row", flexWrap: "wrap", width: 300, paddingLeft: 10 }}>
+           <Text style={{ textAlign: "left", fontSize: 16, padding: 5, }}>{item.title}</Text>
+     </View>
+    <TouchableOpacity onPress={() => deleteNote(item.id)}>
+      <MaterialIcons 
+        name="delete" 
+        size={24} 
+        color="blue"
+      />  
+         </TouchableOpacity>
+    </TouchableOpacity>
      </View>
    );
  }
