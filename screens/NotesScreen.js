@@ -3,7 +3,6 @@ import {
  StyleSheet,
  Alert,
  Text,
- CheckBox,
  View,
  FlatList,
  TouchableOpacity,
@@ -75,16 +74,6 @@ export default function NotesScreen({ navigation, route }) {
    navigation.navigate("Add Note");
  }
 
- /*function done(id) {
-   db.transaction((tx) => {
-     tx.executeSql(
-       `SELECT * FROM notes WHERE done = ?;`, [
-         done ? 1 : 0],
-         (txObj, { rows: { _array } }) => setNotes(_array)
-         );
-   });
- };*/
-
  function deleteNote(id) {
     console.log("Deleting " + id);
     db.transaction((tx) => {
@@ -105,7 +94,7 @@ export default function NotesScreen({ navigation, route }) {
       refreshNotes
     );
   }
-//const [isSelected, setSelection] = useState(false);
+
  function renderItem({ item }) {
    return (
      <View
@@ -118,16 +107,16 @@ export default function NotesScreen({ navigation, route }) {
          borderBottomWidth: 1,
          flexDirection: "row",
          justifyContent: "space-between",
-       }}
-     >
-      
+         alignItems: "center"       
+       }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 300, paddingLeft: 10 }}>
        <Text style={{ textAlign: "left", fontSize: 16 }}>{item.title}</Text>
+       </View>
        <TouchableOpacity onPress={() => deleteNote(item.id)}>
        <MaterialIcons 
             name="delete" 
             size={24} 
-            color="darkgray"
-            flexDirection="row"
+            color="blue"
         />  
        </TouchableOpacity>
      </View>
@@ -153,11 +142,7 @@ const styles = StyleSheet.create({
    alignItems: "center",
    justifyContent: "center",
  },
- /*checkbox: {
-   alignSelf: "center"
- },*/
 });
-
 
 
 
