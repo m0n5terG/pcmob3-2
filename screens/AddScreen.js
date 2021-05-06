@@ -31,10 +31,10 @@ export default function AddScreen({ navigation }) {
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
         </View>
-          <Text style={{ marginTop: 40, color: "black" }}>
+          <Text style={{ marginTop: 40, color: "grey" }}>
           This is what you typed:
         </Text>
-        <Text style={{ color: "#737373", marginTop: 10 }}>{text}</Text>
+        <Text style={{ color: "#737373", marginTop: 10, width: "80%" }}>{text}</Text>
       </View>
     );
    }
@@ -42,6 +42,7 @@ export default function AddScreen({ navigation }) {
     label: {
       fontWeight: "bold",
       fontSize: 24,
+      justifyContent: "center"
     },
     textInput: {
       margin: 20,

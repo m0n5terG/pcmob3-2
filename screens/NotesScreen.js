@@ -99,18 +99,14 @@ export default function NotesScreen({ navigation, route }) {
    return (
      <View
        style={{
-         padding: 10,
-         paddingRight: 30,
-         paddingTop: 20,
-         paddingBottom: 20,
-         borderBottomColor: "#ccc",
-         borderBottomWidth: 1,
          flexDirection: "row",
-         justifyContent: "space-between",
-         alignItems: "center"       
+         justifyContent: "center",
+         paddingTop: 10,
+         width: "auto"     
        }}>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 300, paddingLeft: 10 }}>
-       <Text style={{ textAlign: "left", fontSize: 16 }}>{item.title}</Text>
+         <TouchableOpacity style={styles.listContainer}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", width: 340, paddingLeft: 10 }}>
+       <Text style={{ textAlign: "left", fontSize: 16, padding: 10 }}>{item.title}</Text>
        </View>
        <TouchableOpacity onPress={() => deleteNote(item.id)}>
        <MaterialIcons 
@@ -119,6 +115,7 @@ export default function NotesScreen({ navigation, route }) {
             color="blue"
         />  
        </TouchableOpacity>
+       </TouchableOpacity>
      </View>
    );
  }
@@ -126,7 +123,7 @@ export default function NotesScreen({ navigation, route }) {
  return (
    <View style={styles.container}>
      <FlatList
-       style={{ width: "100%" }}
+       style={{ width: "auto"}}
        data={notes}
        renderItem={renderItem}
        keyExtractor={(item) => item.id.toString()}
@@ -138,10 +135,18 @@ export default function NotesScreen({ navigation, route }) {
 const styles = StyleSheet.create({
  container: {
    flex: 1,
-   backgroundColor: "#e6ebff",
+   backgroundColor: "lightblue",
    alignItems: "center",
    justifyContent: "center",
  },
+ listContainer: {
+   backgroundColor: "whitesmoke",
+   height: "auto",
+   borderRadius: 10,
+   flexDirection: "row",
+   justifyContent: "space-between",
+   alignItems: "center"
+ }
 });
 
 
