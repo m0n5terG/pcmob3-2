@@ -83,6 +83,7 @@ export default function NotesScreen({ navigation, route }) {
         Alert.alert(
           "Done!",
           "Notes deleted successfully",
+
           [
             {
               text: "Ok",
@@ -96,6 +97,7 @@ export default function NotesScreen({ navigation, route }) {
       refreshNotes
     );
   }
+
 
   /* useEffect(() => {
    db.transaction(
@@ -124,11 +126,11 @@ export default function NotesScreen({ navigation, route }) {
             style={{
               flexDirection: "row",
               flexWrap: "wrap",
-              width: 340,
+              width: 300,
               paddingLeft: 10,
             }}
           >
-            <Text style={{ textAlign: "left", fontSize: 16, padding: 10 }}>
+            <Text style={{ textAlign: "left", fontSize: 16, padding: 5 }}>
               {item.title}
             </Text>
           </View>
