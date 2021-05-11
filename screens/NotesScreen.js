@@ -117,7 +117,7 @@ export default function NotesScreen({ navigation, route }) {
         style={{
           flexDirection: "row",
           justifyContent: "center",
-          paddingTop: 10,
+          paddingTop: 15,
           width: "auto",
         }}
       >
@@ -126,11 +126,11 @@ export default function NotesScreen({ navigation, route }) {
             style={{
               flexDirection: "row",
               flexWrap: "wrap",
-              width: 300,
-              paddingLeft: 10,
+              width: 330,
+              paddingLeft: 20,
             }}
           >
-            <Text style={{ textAlign: "left", fontSize: 16, padding: 5 }}>
+            <Text style={{ textAlign: "left", fontSize: 16, paddingTop: 10, paddingBottom: 10 }}>
               {item.title}
             </Text>
           </View>
