@@ -98,19 +98,6 @@ export default function NotesScreen({ navigation, route }) {
     );
   }
 
-
-  /* useEffect(() => {
-   db.transaction(
-    tx => {
-      tx.executeSql('insert into items (done, value) values (0, ?)', [text]);
-      tx.executeSql('select * from items', [], (_, { rows }) =>
-        console.log(JSON.stringify(rows))
-      );
-    },
-    null,
-    refreshNotes
-  );*/
-
   function renderItem({ item }) {
     return (
       <View
@@ -165,6 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "whitesmoke",
     height: "auto",
     borderRadius: 10,
+    paddingRight: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
