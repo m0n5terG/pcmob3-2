@@ -33,7 +33,8 @@ export default function NotesScreen({ navigation, route }) {
           `CREATE TABLE IF NOT EXISTS notes
               (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  title TEXT,
-                 done INT);`
+                 done INT,
+                 date DATE);`
         );
       },
       null,
@@ -61,7 +62,7 @@ export default function NotesScreen({ navigation, route }) {
     if (route.params?.text) {
       db.transaction(
         (tx) => {
-          tx.executeSql("INSERT INTO notes (done, title) VALUES (0, ?)", [
+          tx.executeSql("INSERT INTO notes (title, done, date) VALUES (?, 0, DATE('now'))", [
             route.params.text,
           ]);
         },
@@ -111,15 +112,15 @@ export default function NotesScreen({ navigation, route }) {
         <TouchableOpacity style={styles.listContainer}>
           <View
             style={{
-              flexDirection: "row",
               flexWrap: "wrap",
               width: 330,
               paddingLeft: 20,
             }}
           >
-            <Text style={{ textAlign: "left", fontSize: 16, paddingTop: 10, paddingBottom: 10 }}>
+            <Text style={{ textAlign: "left", fontSize: 16, paddingTop: 10, paddingBottom: 5 }}>
               {item.title}
             </Text>
+            <Text style={{ fontSize: 10, paddingBottom: 10, color: "red" }}>hello</Text>
           </View>
           <TouchableOpacity onPress={() => deleteNote(item.id)}>
             <MaterialIcons name="delete" size={24} color="blue" />
