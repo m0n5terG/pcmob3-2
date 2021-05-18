@@ -33,12 +33,7 @@ export default function NotesScreen({ navigation, route }) {
           `CREATE TABLE IF NOT EXISTS notes
               (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  title TEXT,
-<<<<<<< HEAD
                  done INT);`
-=======
-                 done INT
-                 );`
->>>>>>> 785705a2d360568b2ecc53a0dd12c9b6a889ebce
         );
       },
       null,
