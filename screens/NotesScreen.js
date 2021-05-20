@@ -113,7 +113,7 @@ export default function NotesScreen({ navigation, route }) {
           <View
             style={{
               flexWrap: "wrap",
-              width: 330,
+              width: 320,
               paddingLeft: 20,
             }}
           >
